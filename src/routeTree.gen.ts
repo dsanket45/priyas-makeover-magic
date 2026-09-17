@@ -10,14 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as LocationRouteImport } from './routes/location'
 import { Route as LookbookRouteImport } from './routes/lookbook'
 import { Route as OrnamentsRouteImport } from './routes/ornaments'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as RentalsRouteImport } from './routes/rentals'
 import { Route as ServicesRouteImport } from './routes/services'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationRoute = LocationRouteImport.update({
+  id: '/location',
+  path: '/location',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LookbookRoute = LookbookRouteImport.update({
@@ -28,6 +47,11 @@ const LookbookRoute = LookbookRouteImport.update({
 const OrnamentsRoute = OrnamentsRouteImport.update({
   id: '/ornaments',
   path: '/ornaments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RentalsRoute = RentalsRouteImport.update({
@@ -43,38 +67,82 @@ const ServicesRoute = ServicesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/faq': typeof FaqRoute
+  '/location': typeof LocationRoute
   '/lookbook': typeof LookbookRoute
   '/ornaments': typeof OrnamentsRoute
+  '/pricing': typeof PricingRoute
   '/rentals': typeof RentalsRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/faq': typeof FaqRoute
+  '/location': typeof LocationRoute
   '/lookbook': typeof LookbookRoute
   '/ornaments': typeof OrnamentsRoute
+  '/pricing': typeof PricingRoute
   '/rentals': typeof RentalsRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/faq': typeof FaqRoute
+  '/location': typeof LocationRoute
   '/lookbook': typeof LookbookRoute
   '/ornaments': typeof OrnamentsRoute
+  '/pricing': typeof PricingRoute
   '/rentals': typeof RentalsRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lookbook' | '/ornaments' | '/rentals' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/faq'
+    | '/location'
+    | '/lookbook'
+    | '/ornaments'
+    | '/pricing'
+    | '/rentals'
+    | '/services'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lookbook' | '/ornaments' | '/rentals' | '/services'
-  id: '__root__' | '/' | '/lookbook' | '/ornaments' | '/rentals' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/faq'
+    | '/location'
+    | '/lookbook'
+    | '/ornaments'
+    | '/pricing'
+    | '/rentals'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/faq'
+    | '/location'
+    | '/lookbook'
+    | '/ornaments'
+    | '/pricing'
+    | '/rentals'
+    | '/services'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  FaqRoute: typeof FaqRoute
+  LocationRoute: typeof LocationRoute
   LookbookRoute: typeof LookbookRoute
   OrnamentsRoute: typeof OrnamentsRoute
+  PricingRoute: typeof PricingRoute
   RentalsRoute: typeof RentalsRoute
   ServicesRoute: typeof ServicesRoute
 }
@@ -86,6 +154,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/location': {
+      id: '/location'
+      path: '/location'
+      fullPath: '/location'
+      preLoaderRoute: typeof LocationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lookbook': {
@@ -100,6 +189,13 @@ declare module '@tanstack/react-router' {
       path: '/ornaments'
       fullPath: '/ornaments'
       preLoaderRoute: typeof OrnamentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rentals': {
@@ -121,8 +217,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  FaqRoute: FaqRoute,
+  LocationRoute: LocationRoute,
   LookbookRoute: LookbookRoute,
   OrnamentsRoute: OrnamentsRoute,
+  PricingRoute: PricingRoute,
   RentalsRoute: RentalsRoute,
   ServicesRoute: ServicesRoute,
 }
