@@ -4,9 +4,11 @@ import { useState, type ReactNode } from "react";
 export const navItems = [
   { label: "Services", to: "/services" },
   { label: "Rentals", to: "/rentals" },
+  { label: "Ornaments", to: "/ornaments" },
   { label: "Lookbook", to: "/lookbook" },
   { label: "Pricing", to: "/pricing" },
   { label: "About", to: "/about" },
+  { label: "Location", to: "/location" },
   { label: "FAQ", to: "/faq" },
 ] as const;
 
