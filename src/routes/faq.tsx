@@ -85,7 +85,8 @@ function FaqPage() {
         <Section key={group.group} tone={index % 2 === 1 ? "sage" : "plain"}>
           <SectionHead eyebrow={group.group} title={<em>{group.group} questions</em>} />
           <div className="mt-10 divide-y divide-border border-y border-border">
-            {group.items.map(([question, answer]) => {
+            {group.items.map(([question, answer]: string[]) => {
+              if (!question) return null;
               const isOpen = open === question;
               return (
                 <div key={question}>
