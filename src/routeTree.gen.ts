@@ -11,12 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BridalMakeupRouteImport } from './routes/bridal-makeup'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CulturalLooksRouteImport } from './routes/cultural-looks'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as HairDrapingRouteImport } from './routes/hair-draping'
 import { Route as LocationRouteImport } from './routes/location'
 import { Route as LookbookRouteImport } from './routes/lookbook'
 import { Route as OrnamentsRouteImport } from './routes/ornaments'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as RentalGuideRouteImport } from './routes/rental-guide'
 import { Route as RentalsRouteImport } from './routes/rentals'
 import { Route as ServicesRouteImport } from './routes/services'
 
@@ -30,14 +34,29 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BridalMakeupRoute = BridalMakeupRouteImport.update({
+  id: '/bridal-makeup',
+  path: '/bridal-makeup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CulturalLooksRoute = CulturalLooksRouteImport.update({
+  id: '/cultural-looks',
+  path: '/cultural-looks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HairDrapingRoute = HairDrapingRouteImport.update({
+  id: '/hair-draping',
+  path: '/hair-draping',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocationRoute = LocationRouteImport.update({
@@ -60,6 +79,11 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RentalGuideRoute = RentalGuideRouteImport.update({
+  id: '/rental-guide',
+  path: '/rental-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RentalsRoute = RentalsRouteImport.update({
   id: '/rentals',
   path: '/rentals',
@@ -74,24 +98,32 @@ const ServicesRoute = ServicesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bridal-makeup': typeof BridalMakeupRoute
   '/contact': typeof ContactRoute
+  '/cultural-looks': typeof CulturalLooksRoute
   '/faq': typeof FaqRoute
+  '/hair-draping': typeof HairDrapingRoute
   '/location': typeof LocationRoute
   '/lookbook': typeof LookbookRoute
   '/ornaments': typeof OrnamentsRoute
   '/pricing': typeof PricingRoute
+  '/rental-guide': typeof RentalGuideRoute
   '/rentals': typeof RentalsRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bridal-makeup': typeof BridalMakeupRoute
   '/contact': typeof ContactRoute
+  '/cultural-looks': typeof CulturalLooksRoute
   '/faq': typeof FaqRoute
+  '/hair-draping': typeof HairDrapingRoute
   '/location': typeof LocationRoute
   '/lookbook': typeof LookbookRoute
   '/ornaments': typeof OrnamentsRoute
   '/pricing': typeof PricingRoute
+  '/rental-guide': typeof RentalGuideRoute
   '/rentals': typeof RentalsRoute
   '/services': typeof ServicesRoute
 }
@@ -99,12 +131,16 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bridal-makeup': typeof BridalMakeupRoute
   '/contact': typeof ContactRoute
+  '/cultural-looks': typeof CulturalLooksRoute
   '/faq': typeof FaqRoute
+  '/hair-draping': typeof HairDrapingRoute
   '/location': typeof LocationRoute
   '/lookbook': typeof LookbookRoute
   '/ornaments': typeof OrnamentsRoute
   '/pricing': typeof PricingRoute
+  '/rental-guide': typeof RentalGuideRoute
   '/rentals': typeof RentalsRoute
   '/services': typeof ServicesRoute
 }
@@ -113,36 +149,48 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/bridal-makeup'
     | '/contact'
+    | '/cultural-looks'
     | '/faq'
+    | '/hair-draping'
     | '/location'
     | '/lookbook'
     | '/ornaments'
     | '/pricing'
+    | '/rental-guide'
     | '/rentals'
     | '/services'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/bridal-makeup'
     | '/contact'
+    | '/cultural-looks'
     | '/faq'
+    | '/hair-draping'
     | '/location'
     | '/lookbook'
     | '/ornaments'
     | '/pricing'
+    | '/rental-guide'
     | '/rentals'
     | '/services'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/bridal-makeup'
     | '/contact'
+    | '/cultural-looks'
     | '/faq'
+    | '/hair-draping'
     | '/location'
     | '/lookbook'
     | '/ornaments'
     | '/pricing'
+    | '/rental-guide'
     | '/rentals'
     | '/services'
   fileRoutesById: FileRoutesById
@@ -150,12 +198,16 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BridalMakeupRoute: typeof BridalMakeupRoute
   ContactRoute: typeof ContactRoute
+  CulturalLooksRoute: typeof CulturalLooksRoute
   FaqRoute: typeof FaqRoute
+  HairDrapingRoute: typeof HairDrapingRoute
   LocationRoute: typeof LocationRoute
   LookbookRoute: typeof LookbookRoute
   OrnamentsRoute: typeof OrnamentsRoute
   PricingRoute: typeof PricingRoute
+  RentalGuideRoute: typeof RentalGuideRoute
   RentalsRoute: typeof RentalsRoute
   ServicesRoute: typeof ServicesRoute
 }
@@ -176,6 +228,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bridal-makeup': {
+      id: '/bridal-makeup'
+      path: '/bridal-makeup'
+      fullPath: '/bridal-makeup'
+      preLoaderRoute: typeof BridalMakeupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -183,11 +242,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cultural-looks': {
+      id: '/cultural-looks'
+      path: '/cultural-looks'
+      fullPath: '/cultural-looks'
+      preLoaderRoute: typeof CulturalLooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faq': {
       id: '/faq'
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hair-draping': {
+      id: '/hair-draping'
+      path: '/hair-draping'
+      fullPath: '/hair-draping'
+      preLoaderRoute: typeof HairDrapingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/location': {
@@ -218,6 +291,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rental-guide': {
+      id: '/rental-guide'
+      path: '/rental-guide'
+      fullPath: '/rental-guide'
+      preLoaderRoute: typeof RentalGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rentals': {
       id: '/rentals'
       path: '/rentals'
@@ -238,12 +318,16 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BridalMakeupRoute: BridalMakeupRoute,
   ContactRoute: ContactRoute,
+  CulturalLooksRoute: CulturalLooksRoute,
   FaqRoute: FaqRoute,
+  HairDrapingRoute: HairDrapingRoute,
   LocationRoute: LocationRoute,
   LookbookRoute: LookbookRoute,
   OrnamentsRoute: OrnamentsRoute,
   PricingRoute: PricingRoute,
+  RentalGuideRoute: RentalGuideRoute,
   RentalsRoute: RentalsRoute,
   ServicesRoute: ServicesRoute,
 }
