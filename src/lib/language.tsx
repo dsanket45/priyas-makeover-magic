@@ -15,7 +15,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const saved = window.localStorage.getItem("priya-language");
-    if (saved === "kn") setLanguageState("kn");
+    if (saved === "kn") {
+      setLanguageState("kn");
+      document.documentElement.lang = "kn";
+    }
   }, []);
 
   const setLanguage = (next: Language) => {

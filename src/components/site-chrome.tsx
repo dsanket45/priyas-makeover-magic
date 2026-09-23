@@ -1,15 +1,24 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import { useLanguage } from "../lib/language";
+import { Button } from "./ui/button";
 
 export const navItems = [
-  { label: "Services", to: "/services" },
-  { label: "Rentals", to: "/rentals" },
-  { label: "Ornaments", to: "/ornaments" },
-  { label: "Lookbook", to: "/lookbook" },
-  { label: "Pricing", to: "/pricing" },
-  { label: "About", to: "/about" },
-  { label: "Location", to: "/location" },
-  { label: "FAQ", to: "/faq" },
+  { label: "Bridal", labelKn: "ವಧು ಮೇಕಪ್", to: "/bridal-makeup" },
+  { label: "Hair & draping", labelKn: "ಹೇರ್ ಮತ್ತು ಡ್ರೇಪಿಂಗ್", to: "/hair-draping" },
+  { label: "Cultural looks", labelKn: "ಸಾಂಸ್ಕೃತಿಕ ಲುಕ್", to: "/cultural-looks" },
+  { label: "Rentals", labelKn: "ಬಾಡಿಗೆ", to: "/rentals" },
+  { label: "Lookbook", labelKn: "ಲುಕ್‌ಬುಕ್", to: "/lookbook" },
+] as const;
+
+const moreItems = [
+  { label: "All services", labelKn: "ಎಲ್ಲ ಸೇವೆಗಳು", to: "/services" },
+  { label: "Jewellery & ornaments", labelKn: "ಆಭರಣಗಳು", to: "/ornaments" },
+  { label: "Rental guide", labelKn: "ಬಾಡಿಗೆ ಮಾರ್ಗದರ್ಶಿ", to: "/rental-guide" },
+  { label: "Pricing", labelKn: "ಬೆಲೆಗಳು", to: "/pricing" },
+  { label: "About", labelKn: "ನಮ್ಮ ಬಗ್ಗೆ", to: "/about" },
+  { label: "Location", labelKn: "ಸ್ಥಳ", to: "/location" },
+  { label: "FAQ", labelKn: "ಪ್ರಶ್ನೆಗಳು", to: "/faq" },
 ] as const;
 
 export const Arrow = () => (
@@ -43,6 +52,7 @@ export function ActionLink({
 
 export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { language, setLanguage, pick } = useLanguage();
 
   return (
     <header
@@ -56,32 +66,41 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         <Link to="/" className="font-display text-[1.7rem] leading-none" aria-label="Priya Makeover home">
           Priya <em className="font-normal">Makeover</em>
         </Link>
-        <nav className="hidden items-center gap-7 text-xs font-medium uppercase tracking-wide lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-5 text-xs font-medium uppercase tracking-wide xl:flex" aria-label="Main navigation">
           {navItems.map((item) => (
             <Link key={item.to} to={item.to} className="nav-link" activeProps={{ className: "nav-link font-semibold" }}>
-              {item.label}
+              {pick(item.label, item.labelKn)}
             </Link>
           ))}
         </nav>
-        <Link to="/contact" className="hidden border-b border-current pb-1 text-xs font-semibold uppercase tracking-wide sm:block">
-          Book a date
-        </Link>
-        <button
+        <div className="ml-auto flex items-center gap-3 xl:ml-0">
+          <div className="flex h-9 items-center border border-current/35 p-1 text-[0.65rem] font-bold uppercase" aria-label={pick("Choose language", "ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ")}>
+            <Button type="button" variant="ghost" size="sm" className={`h-7 rounded-none px-2 ${language === "en" ? "bg-current/15" : ""}`} aria-pressed={language === "en"} onClick={() => setLanguage("en")}>EN</Button>
+            <span aria-hidden="true" className="opacity-40">|</span>
+            <Button type="button" variant="ghost" size="sm" className={`h-7 rounded-none px-2 ${language === "kn" ? "bg-current/15" : ""}`} aria-pressed={language === "kn"} onClick={() => setLanguage("kn")}>ಕನ್ನಡ</Button>
+          </div>
+          <Link to="/contact" className="hidden border-b border-current pb-1 text-xs font-semibold uppercase tracking-wide sm:block">
+            {pick("Check your date", "ದಿನಾಂಕ ವಿಚಾರಿಸಿ")}
+          </Link>
+        </div>
+        <Button
           type="button"
-          className={`grid size-10 place-items-center rounded-full border lg:hidden ${overlay ? "border-hero-foreground/40" : "border-border"}`}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          variant="ghost"
+          size="icon"
+          className={`grid size-10 place-items-center rounded-full border xl:hidden ${overlay ? "border-hero-foreground/40" : "border-border"}`}
+          aria-label={menuOpen ? pick("Close menu", "ಮೆನು ಮುಚ್ಚಿ") : pick("Open menu", "ಮೆನು ತೆರೆಯಿರಿ")}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((value) => !value)}
         >
           <MenuIcon open={menuOpen} />
-        </button>
+        </Button>
       </div>
       {menuOpen && (
-        <nav className="border-t border-hero-foreground/20 bg-forest px-5 py-6 text-hero-foreground lg:hidden" aria-label="Mobile navigation">
-          <div className="flex flex-col gap-4 font-display text-3xl">
-            {[...navItems, { label: "Contact", to: "/contact" }].map((item) => (
+        <nav className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-hero-foreground/20 bg-forest px-5 py-6 text-hero-foreground xl:hidden" aria-label="Mobile navigation">
+          <div className="grid gap-x-8 gap-y-4 font-display text-2xl sm:grid-cols-2">
+            {[...navItems, ...moreItems, { label: "Contact", labelKn: "ಸಂಪರ್ಕ", to: "/contact" }].map((item) => (
               <Link key={item.to} to={item.to} onClick={() => setMenuOpen(false)}>
-                {item.label}
+                {pick(item.label, item.labelKn)}
               </Link>
             ))}
           </div>
@@ -92,39 +111,37 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
 }
 
 export function SiteFooter() {
+  const { pick } = useLanguage();
   return (
     <footer className="bg-forest text-hero-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 md:grid-cols-4">
         <div className="md:col-span-2">
           <p className="font-display text-4xl">Priya <em>Makeover</em></p>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-hero-foreground/70">
-            Indian bridal makeup, hair and draping, with jewellery, ornaments and occasion wear available for rent — all under one roof.
+            {pick("Indian bridal makeup, hair and draping, with jewellery, ornaments and occasion wear available for rent — all under one roof.", "ಭಾರತೀಯ ವಧು ಮೇಕಪ್, ಹೇರ್, ಡ್ರೇಪಿಂಗ್, ಆಭರಣ ಮತ್ತು ಉಡುಪು ಬಾಡಿಗೆ — ಎಲ್ಲವೂ ಒಂದೇ ಸ್ಥಳದಲ್ಲಿ.")}
           </p>
-          <p className="mt-6 text-xs uppercase tracking-wide text-hero-foreground/55">
-            Studio hours · Mon—Sun, 9am—8pm (by appointment)
-          </p>
+          <Link to="/contact" className="mt-6 inline-block border-b border-current pb-1 text-xs uppercase tracking-wide">{pick("Check availability", "ಲಭ್ಯತೆ ವಿಚಾರಿಸಿ")}</Link>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-hero-foreground/60">Explore</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-hero-foreground/60">{pick("Explore", "ಅನ್ವೇಷಿಸಿ")}</p>
           <div className="mt-4 flex flex-col gap-2 text-sm">
             {navItems.map((item) => (
-              <Link key={item.to} to={item.to} className="text-hero-foreground/85">{item.label}</Link>
+              <Link key={item.to} to={item.to} className="text-hero-foreground/85">{pick(item.label, item.labelKn)}</Link>
             ))}
           </div>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-hero-foreground/60">Visit & book</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-hero-foreground/60">{pick("Plan & book", "ಯೋಜನೆ ಮತ್ತು ಬುಕ್ಕಿಂಗ್")}</p>
           <div className="mt-4 flex flex-col gap-2 text-sm text-hero-foreground/85">
-            <Link to="/contact">Enquiry & booking</Link>
-            <Link to="/lookbook">Bridal lookbook</Link>
-            <Link to="/pricing">Packages & pricing</Link>
-            <span className="text-hero-foreground/55">Phone & address to be added</span>
+            <Link to="/contact">{pick("Enquiry & booking", "ವಿಚಾರಣೆ ಮತ್ತು ಬುಕ್ಕಿಂಗ್")}</Link>
+            <Link to="/rental-guide">{pick("Rental guide", "ಬಾಡಿಗೆ ಮಾರ್ಗದರ್ಶಿ")}</Link>
+            <Link to="/pricing">{pick("Packages & pricing", "ಪ್ಯಾಕೇಜ್ ಮತ್ತು ಬೆಲೆ")}</Link>
           </div>
         </div>
       </div>
       <div className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-hero-foreground/20 px-5 py-6 text-xs text-hero-foreground/55 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <p>© {new Date().getFullYear()} Priya Makeover. All looks styled in studio.</p>
-        <p>Bridal · Engagement · Reception · Festive · Rentals</p>
+        <p>© {new Date().getFullYear()} Priya Makeover.</p>
+        <p>{pick("Bridal · Engagement · Reception · Festive · Rentals", "ವಧು · ನಿಶ್ಚಿತಾರ್ಥ · ರಿಸೆಪ್ಷನ್ · ಹಬ್ಬ · ಬಾಡಿಗೆ")}</p>
       </div>
     </footer>
   );
