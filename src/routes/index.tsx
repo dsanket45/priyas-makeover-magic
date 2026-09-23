@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { ActionLink, PageHero, SiteFooter, SiteHeader } from "../components/site-chrome";
 import { CardGrid, Section, SectionHead, Stat } from "../components/page-parts";
+import { useLanguage } from "../lib/language";
 import heroImage from "../assets/priya-bridal-hero.jpg";
 import hairImage from "../assets/priya-hair-look.jpg";
 import jewelleryImage from "../assets/priya-jewellery.jpg";
@@ -76,7 +77,45 @@ const journeySteps = [
   { meta: "Step 03", title: "Celebration day", text: "Priya arrives with a planned timeline so you are ready calmly, never rushed." },
 ];
 
+const valueReasons = [
+  {
+    meta: "One vision",
+    title: "Everything matches",
+    text: "Makeup, hair, drape, jewellery and outfit are planned together, so no detail competes with another.",
+  },
+  {
+    meta: "Less coordination",
+    title: "Fewer vendors to manage",
+    text: "One consultation can shape the full look, reducing repeated calls, separate trials and wedding-morning confusion.",
+  },
+  {
+    meta: "Try before deciding",
+    title: "See the complete combination",
+    text: "Compare finishes, ornaments and rental pieces against your outfit before reserving what truly suits you.",
+  },
+  {
+    meta: "Clear preparation",
+    title: "Know what happens next",
+    text: "A planned sequence for consultation, trial, fitting and celebration day helps everyone arrive prepared.",
+  },
+];
+
+const valueReasonsKn = [
+  { meta: "ಒಂದೇ ದೃಷ್ಟಿ", title: "ಎಲ್ಲವೂ ಹೊಂದಾಣಿಕೆ", text: "ಮೇಕಪ್, ಹೇರ್, ಡ್ರೇಪ್, ಆಭರಣ ಮತ್ತು ಉಡುಪನ್ನು ಒಟ್ಟಿಗೆ ಯೋಜಿಸುವುದರಿಂದ ಪ್ರತಿ ವಿವರ ಸಮತೋಲನದಲ್ಲಿರುತ್ತದೆ." },
+  { meta: "ಕಡಿಮೆ ಗೊಂದಲ", title: "ಕಡಿಮೆ ಜನರೊಂದಿಗೆ ಸಂಯೋಜನೆ", text: "ಒಂದೇ ಸಮಾಲೋಚನೆಯಲ್ಲಿ ಪೂರ್ಣ ಲುಕ್ ರೂಪಿಸಬಹುದು; ಬೇರೆ ಬೇರೆ ಕರೆ, ಟ್ರಯಲ್ ಮತ್ತು ಮದುವೆ ದಿನದ ಗೊಂದಲ ಕಡಿಮೆಯಾಗುತ್ತದೆ." },
+  { meta: "ನಿರ್ಧಾರಕ್ಕೂ ಮುನ್ನ ಟ್ರಯಲ್", title: "ಪೂರ್ಣ ಕಾಂಬಿನೇಷನ್ ನೋಡಿ", text: "ಕಾಯ್ದಿರಿಸುವ ಮುನ್ನ ನಿಮ್ಮ ಉಡುಪಿನೊಂದಿಗೆ ಫಿನಿಷ್, ಆಭರಣ ಮತ್ತು ಬಾಡಿಗೆ ವಸ್ತುಗಳನ್ನು ಹೋಲಿಸಿ ನೋಡಿ." },
+  { meta: "ಸ್ಪಷ್ಟ ತಯಾರಿ", title: "ಮುಂದಿನ ಹಂತ ತಿಳಿಯಿರಿ", text: "ಸಮಾಲೋಚನೆ, ಟ್ರಯಲ್, ಫಿಟಿಂಗ್ ಮತ್ತು ಸಮಾರಂಭದ ದಿನದ ಸ್ಪಷ್ಟ ಕ್ರಮ ಎಲ್ಲರನ್ನೂ ಸಿದ್ಧವಾಗಿರಿಸುತ್ತದೆ." },
+];
+
+const occasionPaths = [
+  { to: "/bridal-makeup", en: "Wedding day", kn: "ಮದುವೆಯ ದಿನ", detailEn: "Bridal makeup, trial and long-wear planning", detailKn: "ವಧು ಮೇಕಪ್, ಟ್ರಯಲ್ ಮತ್ತು ದೀರ್ಘಕಾಲದ ಯೋಜನೆ" },
+  { to: "/cultural-looks", en: "Muhurtham & rituals", kn: "ಮುಹೂರ್ತ ಮತ್ತು ಶಾಸ್ತ್ರ", detailEn: "Kannada and regional styling with cultural care", detailKn: "ಕನ್ನಡ ಮತ್ತು ಪ್ರಾದೇಶಿಕ ಸಂಪ್ರದಾಯದ ಸ್ಟೈಲಿಂಗ್" },
+  { to: "/hair-draping", en: "Engagement & reception", kn: "ನಿಶ್ಚಿತಾರ್ಥ ಮತ್ತು ರಿಸೆಪ್ಷನ್", detailEn: "Hair, saree, lehenga and dupatta finishing", detailKn: "ಹೇರ್, ಸೀರೆ, ಲೆಹೆಂಗಾ ಮತ್ತು ದುಪಟ್ಟಾ ಫಿನಿಷಿಂಗ್" },
+  { to: "/rental-guide", en: "Outfit & jewellery rental", kn: "ಉಡುಪು ಮತ್ತು ಆಭರಣ ಬಾಡಿಗೆ", detailEn: "Selection, fittings, care, collection and return", detailKn: "ಆಯ್ಕೆ, ಫಿಟಿಂಗ್, ಕಾಳಜಿ, ಪಡೆಯುವಿಕೆ ಮತ್ತು ಹಿಂತಿರುಗಿಸುವಿಕೆ" },
+] as const;
+
 function Index() {
+  const { pick } = useLanguage();
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SiteHeader overlay />
@@ -93,17 +132,17 @@ function Index() {
         <div className="relative mx-auto flex min-h-[760px] max-w-screen-2xl items-end px-5 pb-16 pt-32 sm:px-8 sm:pb-20 lg:px-12">
           <div className="max-w-4xl animate-fade-in">
             <p className="mb-5 flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-wide">
-              <span className="h-px w-10 bg-current" /> Bridal beauty · Hair · Rental atelier
+              <span className="h-px w-10 bg-current" /> {pick("Bridal beauty · Hair · Rental atelier", "ವಧು ಸೌಂದರ್ಯ · ಹೇರ್ · ಬಾಡಿಗೆ ಅಟೆಲಿಯರ್")}
             </p>
             <h1 className="max-w-[13ch] font-display text-[clamp(4.5rem,9vw,9rem)] leading-[0.8]">
-              Your beauty, <em className="font-normal">beautifully</em> remembered.
+              {pick(<>Your beauty, <em className="font-normal">beautifully</em> remembered.</>, <>ನಿಮ್ಮ ಸೌಂದರ್ಯ, <em className="font-normal">ಸುಂದರ ನೆನಪಾಗಿ.</em></>)}
             </h1>
             <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center">
               <ActionLink to="/contact" light>
-                Plan your look
+                {pick("Plan your complete look", "ಪೂರ್ಣ ಲುಕ್ ಯೋಜಿಸಿ")}
               </ActionLink>
               <p className="max-w-sm text-sm leading-relaxed text-hero-foreground/80">
-                Complete Indian bridal styling, thoughtfully composed from the first brushstroke to the final ornament.
+                {pick("Complete Indian bridal styling, thoughtfully composed from the first brushstroke to the final ornament.", "ಮೊದಲ ಮೇಕಪ್ ಸ್ಪರ್ಶದಿಂದ ಕೊನೆಯ ಆಭರಣದವರೆಗೆ, ಸಂಪೂರ್ಣ ಭಾರತೀಯ ವಧು ಸ್ಟೈಲಿಂಗ್.")}
               </p>
             </div>
           </div>
@@ -124,9 +163,9 @@ function Index() {
               connected, comfortable and made for your celebration.
             </p>
             <div className="mt-12 grid gap-8 sm:grid-cols-3">
-              <Stat value="600+" label="Looks created" />
-              <Stat value="300+" label="Rental pieces" />
-              <Stat value="9am—8pm" label="Studio hours" />
+               <Stat value="01" label={pick("Plan the look", "ಲುಕ್ ಯೋಜನೆ")} />
+               <Stat value="02" label={pick("Try & coordinate", "ಟ್ರಯಲ್ ಮತ್ತು ಹೊಂದಾಣಿಕೆ")} />
+               <Stat value="03" label={pick("Reserve your date", "ದಿನಾಂಕ ಕಾಯ್ದಿರಿಸಿ")} />
             </div>
           </div>
         </div>
@@ -134,6 +173,33 @@ function Index() {
         <div className="mt-12 flex flex-wrap gap-8">
           <ActionLink to="/services">All services in detail</ActionLink>
           <ActionLink to="/pricing">Packages & pricing</ActionLink>
+        </div>
+      </Section>
+
+      <Section tone="forest">
+        <SectionHead
+          eyebrow={pick("Why choose the complete studio", "ಪೂರ್ಣ ಸ್ಟುಡಿಯೋ ಆಯ್ಕೆ ಯಾಕೆ")}
+          muted
+          title={pick(<>One celebration. <em>One considered plan.</em></>, <>ಒಂದೇ ಸಂಭ್ರಮ. <em>ಒಂದೇ ಸಮಗ್ರ ಯೋಜನೆ.</em></>)}
+          intro={pick("Instead of coordinating makeup, hair, draping and rentals separately, build one look with every decision connected.", "ಮೇಕಪ್, ಹೇರ್, ಡ್ರೇಪಿಂಗ್ ಮತ್ತು ಬಾಡಿಗೆಯನ್ನು ಬೇರೆ ಬೇರೆ ಆಯೋಜಿಸುವ ಬದಲು, ಎಲ್ಲ ನಿರ್ಧಾರಗಳನ್ನು ಒಟ್ಟಿಗೆ ಜೋಡಿಸಿ ಒಂದೇ ಲುಕ್ ರೂಪಿಸಿ.")}
+        />
+        <CardGrid items={pick(valueReasons, valueReasonsKn)} />
+        <div className="mt-10"><ActionLink to="/contact" light>{pick("Start with your event date", "ನಿಮ್ಮ ದಿನಾಂಕದಿಂದ ಆರಂಭಿಸಿ")}</ActionLink></div>
+      </Section>
+
+      <Section>
+        <SectionHead
+          eyebrow={pick("Find your starting point", "ನಿಮ್ಮ ಆರಂಭದ ಸೇವೆ ಆಯ್ಕೆಮಾಡಿ")}
+          title={pick(<>What are you <em>planning?</em></>, <>ನೀವು ಏನು <em>ಯೋಜಿಸುತ್ತಿದ್ದೀರಿ?</em></>)}
+          intro={pick("Choose the moment that is closest to yours. Each guide explains options, preparation and the next step.", "ನಿಮ್ಮ ಸಮಾರಂಭಕ್ಕೆ ಹತ್ತಿರವಾದ ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ. ಪ್ರತಿ ಮಾರ್ಗದರ್ಶಿಯಲ್ಲಿ ಆಯ್ಕೆಗಳು, ತಯಾರಿ ಮತ್ತು ಮುಂದಿನ ಹಂತವಿದೆ.")}
+        />
+        <div className="mt-12 grid border-l border-t border-border sm:grid-cols-2">
+          {occasionPaths.map((item) => (
+            <Link key={item.to} to={item.to} className="group flex min-h-40 items-end justify-between gap-6 border-b border-r border-border bg-card p-7 transition-colors hover:bg-soft-sage">
+              <div><p className="font-display text-3xl leading-tight">{pick(item.en, item.kn)}</p><p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">{pick(item.detailEn, item.detailKn)}</p></div>
+              <span className="shrink-0 text-terracotta transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+            </Link>
+          ))}
         </div>
       </Section>
 

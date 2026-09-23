@@ -3,6 +3,8 @@ import { useState } from "react";
 
 import { ActionLink, PageHero, SiteFooter, SiteHeader } from "../components/site-chrome";
 import { CardGrid, DetailList, Section, SectionHead } from "../components/page-parts";
+import { Button } from "../components/ui/button";
+import { useLanguage } from "../lib/language";
 import jewelleryImage from "../assets/priya-jewellery.jpg";
 
 export const Route = createFileRoute("/contact")({
@@ -61,6 +63,7 @@ const goodToKnow = [
 ];
 
 function ContactPage() {
+  const { pick } = useLanguage();
   const [form, setForm] = useState({
     name: "",
     contact: "",
@@ -76,13 +79,13 @@ function ContactPage() {
     <main className="min-h-screen bg-background text-foreground">
       <SiteHeader overlay />
       <PageHero
-        eyebrow="Contact & booking"
+        eyebrow={pick("Contact & booking", "ಸಂಪರ್ಕ ಮತ್ತು ಬುಕ್ಕಿಂಗ್")}
         title={
           <>
-            Let’s hold your <em className="font-normal">date.</em>
+            {pick(<>Let’s hold your <em className="font-normal">date.</em></>, <>ನಿಮ್ಮ <em className="font-normal">ದಿನಾಂಕ ಕಾಯ್ದಿರಿಸೋಣ.</em></>)}
           </>
         }
-        intro="Tell Priya about your celebration — the dates, the functions and the look you're dreaming of — and get a clear answer on availability."
+        intro={pick("Tell Priya about your celebration — the dates, the functions and the look you're dreaming of — and prepare a complete enquiry.", "ನಿಮ್ಮ ಸಮಾರಂಭ, ದಿನಾಂಕ, ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ನೀವು ಬಯಸುವ ಲುಕ್ ತಿಳಿಸಿ — ಸಂಪೂರ್ಣ ವಿಚಾರಣೆಯನ್ನು ಸಿದ್ಧಪಡಿಸಿ.")}
         image={jewelleryImage}
         alt="Kundan bridal jewellery from the rental collection"
       />
@@ -91,13 +94,13 @@ function ContactPage() {
         <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
           <div>
             <SectionHead
-              eyebrow="Enquiry"
+               eyebrow={pick("Enquiry", "ವಿಚಾರಣೆ")}
               title={
                 <>
-                  Share your <em>details.</em>
+                   {pick(<>Share your <em>details.</em></>, <>ನಿಮ್ಮ <em>ವಿವರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ.</em></>)}
                 </>
               }
-              intro="Fill this in and the studio will get back with availability, packages and rental suggestions."
+               intro={pick("Fill this in to prepare the exact information the studio needs for availability, packages and rental suggestions.", "ಲಭ್ಯತೆ, ಪ್ಯಾಕೇಜ್ ಮತ್ತು ಬಾಡಿಗೆ ಸಲಹೆಗೆ ಸ್ಟುಡಿಯೋಗೆ ಬೇಕಾದ ಸರಿಯಾದ ಮಾಹಿತಿಯನ್ನು ಇಲ್ಲಿ ಸಿದ್ಧಪಡಿಸಿ.")}
             />
 
             <form
@@ -109,27 +112,27 @@ function ContactPage() {
             >
               <div className="grid gap-6 sm:grid-cols-2">
                 <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Your name</span>
+                   <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{pick("Your name", "ನಿಮ್ಮ ಹೆಸರು")}</span>
                   <input
                     required
                     value={form.name}
                     onChange={(event) => update("name", event.target.value)}
                     className="mt-2 w-full border border-border bg-card px-4 py-3 text-sm outline-none transition-colors focus:border-terracotta"
-                    placeholder="Full name"
+                     placeholder={pick("Full name", "ಪೂರ್ಣ ಹೆಸರು")}
                   />
                 </label>
                 <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Phone or email</span>
+                   <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{pick("Phone or email", "ಫೋನ್ ಅಥವಾ ಇಮೇಲ್")}</span>
                   <input
                     required
                     value={form.contact}
                     onChange={(event) => update("contact", event.target.value)}
                     className="mt-2 w-full border border-border bg-card px-4 py-3 text-sm outline-none transition-colors focus:border-terracotta"
-                    placeholder="How Priya can reach you"
+                     placeholder={pick("How Priya can reach you", "ಪ್ರಿಯಾ ನಿಮ್ಮನ್ನು ಹೇಗೆ ಸಂಪರ್ಕಿಸಬಹುದು")}
                   />
                 </label>
                 <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Event date</span>
+                   <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{pick("Event date", "ಕಾರ್ಯಕ್ರಮದ ದಿನಾಂಕ")}</span>
                   <input
                     type="date"
                     value={form.date}
@@ -138,7 +141,7 @@ function ContactPage() {
                   />
                 </label>
                 <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Occasion</span>
+                   <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{pick("Occasion", "ಸಮಾರಂಭ")}</span>
                   <select
                     value={form.occasion}
                     onChange={(event) => update("occasion", event.target.value)}
@@ -154,23 +157,25 @@ function ContactPage() {
               </div>
               <label className="block">
                 <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  Functions, outfit & look
+                   {pick("Functions, outfit & look", "ಕಾರ್ಯಕ್ರಮ, ಉಡುಪು ಮತ್ತು ಲುಕ್")}
                 </span>
                 <textarea
                   rows={5}
                   value={form.message}
                   onChange={(event) => update("message", event.target.value)}
                   className="mt-2 w-full border border-border bg-card px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-terracotta"
-                  placeholder="Number of functions, venue city, outfit colours, jewellery you own, and any look you love."
+                   placeholder={pick("Number of functions, venue city, outfit colours, jewellery you own, and any look you love.", "ಕಾರ್ಯಕ್ರಮಗಳ ಸಂಖ್ಯೆ, ಸ್ಥಳ, ಉಡುಪಿನ ಬಣ್ಣ, ನಿಮ್ಮ ಆಭರಣ ಮತ್ತು ಇಷ್ಟದ ಲುಕ್ ತಿಳಿಸಿ.")}
                 />
               </label>
-              <button type="submit" className="action-link">
-                <span>Send enquiry</span>
-              </button>
+               <Button type="submit" variant="ghost" className="action-link rounded-none px-0">
+                 <span>{pick("Prepare enquiry", "ವಿಚಾರಣೆ ಸಿದ್ಧಪಡಿಸಿ")}</span>
+               </Button>
               {sent && (
                 <p role="status" className="text-sm text-terracotta">
-                  Thank you, {form.name || "friend"} — your details are ready to send. The studio’s phone, WhatsApp and email
-                  still need to be added before this enquiry can be delivered.
+                   {pick(
+                     <>Thank you, {form.name || "friend"} — your details are ready. The studio’s real contact method must be added before this can be delivered.</>,
+                     <>ಧನ್ಯವಾದಗಳು, {form.name || "ಸ್ನೇಹಿತರೆ"} — ನಿಮ್ಮ ವಿವರಗಳು ಸಿದ್ಧವಾಗಿವೆ. ಇದನ್ನು ಕಳುಹಿಸಲು ಸ್ಟುಡಿಯೋದ ನಿಜವಾದ ಸಂಪರ್ಕ ವಿಧಾನವನ್ನು ಸೇರಿಸಬೇಕು.</>,
+                   )}
                 </p>
               )}
             </form>
