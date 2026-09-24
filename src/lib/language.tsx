@@ -10,6 +10,12 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
+const fallback: LanguageContextValue = {
+  language: "en",
+  setLanguage: () => {},
+  pick: <T,>(english: T) => english,
+};
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>("en");
 
@@ -41,6 +47,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
 export function useLanguage() {
   const context = useContext(LanguageContext);
-  if (!context) throw new Error("useLanguage must be used inside LanguageProvider");
-  return context;
+  // Fallback keeps pages rendering (English) if the provider is briefly missing, e.g. during hot reload.
+  return context ?? fallback;
 }
