@@ -107,6 +107,22 @@ const valueReasonsKn = [
   { meta: "ಸ್ಪಷ್ಟ ತಯಾರಿ", title: "ಮುಂದಿನ ಹಂತ ತಿಳಿಯಿರಿ", text: "ಸಮಾಲೋಚನೆ, ಟ್ರಯಲ್, ಫಿಟಿಂಗ್ ಮತ್ತು ಸಮಾರಂಭದ ದಿನದ ಸ್ಪಷ್ಟ ಕ್ರಮ ಎಲ್ಲರನ್ನೂ ಸಿದ್ಧವಾಗಿರಿಸುತ್ತದೆ." },
 ];
 
+
+const servicesKn = [
+  { meta: "01", title: "ವಧು ಮೇಕಪ್", text: "ನಿಮ್ಮ ಮುಖ, ಉಡುಪು, ಆಭರಣ ಮತ್ತು ಪ್ರತಿ ಸಮಾರಂಭಕ್ಕೆ ತಕ್ಕ ಮೇಕಪ್.", points: ["HD ಮತ್ತು ಏರ್‌ಬ್ರಶ್ ಬೇಸ್", "ಮದುವೆಗೂ ಮುನ್ನ ಟ್ರಯಲ್", "ಬಹು ಸಮಾರಂಭ ಪ್ಯಾಕೇಜ್"] },
+  { meta: "02", title: "ಹೇರ್ ಮತ್ತು ಡ್ರೇಪಿಂಗ್", text: "ಹೂವಿನ ಜಡೆ, ತುರುಬು, ಸೀರೆ ಮತ್ತು ದುಪಟ್ಟಾ — ದೀರ್ಘ ಸಮಾರಂಭದವರೆಗೂ ಉಳಿಯುವಂತೆ.", points: ["ಸಾಂಪ್ರದಾಯಿಕ ಮತ್ತು ಆಧುನಿಕ", "ಸೀರೆ ಮತ್ತು ಲೆಹೆಂಗಾ ಡ್ರೇಪಿಂಗ್", "ಕೂದಲಿನ ಆಭರಣ ಜೋಡಣೆ"] },
+  { meta: "03", title: "ಸಾಂಸ್ಕೃತಿಕ ಲುಕ್", text: "ಪ್ರಾದೇಶಿಕ ವಧು ಶೈಲಿಯನ್ನು ಗೌರವದಿಂದ — ನಿಮ್ಮತನ ಉಳಿಸಿಕೊಂಡು.", points: ["ದಕ್ಷಿಣ ಮತ್ತು ಉತ್ತರ ಭಾರತೀಯ", "ಹಬ್ಬ ಮತ್ತು ಪೂಜೆ ಲುಕ್", "ಕುಟುಂಬದವರ ಸ್ಟೈಲಿಂಗ್"] },
+  { meta: "04", title: "ಆಭರಣ ಬಾಡಿಗೆ", text: "ಒಮ್ಮೆ ಧರಿಸುವ ಆಭರಣ ಖರೀದಿಸದೆ, ಉಡುಪಿಗೆ ಹೊಂದುವ ಕುಂದನ್, ಪೋಲ್ಕಿ, ಟೆಂಪಲ್ ಮತ್ತು ಮುತ್ತಿನ ಸೆಟ್.", points: ["ವಧು ನೆಕ್ಲೇಸ್ ಸೆಟ್", "ಬೈತಲೆ ಬೊಟ್ಟು ಮತ್ತು ಜುಮ್ಕಿ", "ಡಾಬು ಮತ್ತು ಬಳೆಗಳು"] },
+  { meta: "05", title: "ಆಭರಣ ಮತ್ತು ಅಲಂಕಾರ", text: "ಕೂದಲಿನ ಆಭರಣ, ಹೂವಿನ ಅಲಂಕಾರ ಮತ್ತು ಅಂತಿಮ ಸ್ಪರ್ಶಗಳು.", points: ["ಜಡೆ ಬಿಲ್ಲೆ ಮತ್ತು ಹೂವು", "ಸೊಂಟಪಟ್ಟಿ ಮತ್ತು ಗೆಜ್ಜೆ", "ದುಪಟ್ಟಾ ಪಿನ್ ಮತ್ತು ವೇಲ್"] },
+  { meta: "06", title: "ಉಡುಪು ಬಾಡಿಗೆ", text: "ಲೆಹೆಂಗಾ, ಸೀರೆ, ಗೌನ್ ಮತ್ತು ರಿಸೆಪ್ಷನ್ ಉಡುಪು — ಸ್ಟುಡಿಯೋದಲ್ಲೇ ಫಿಟಿಂಗ್.", points: ["ವಧು ಮತ್ತು ರಿಸೆಪ್ಷನ್ ಉಡುಪು", "ಸ್ಟುಡಿಯೋದಲ್ಲೇ ಬದಲಾವಣೆ", "ಮೂರು ದಿನದ ಬಾಡಿಗೆ ಅವಧಿ"] },
+];
+
+const journeyStepsKn = [
+  { meta: "ಹಂತ 01", title: "ಸಮಾಲೋಚನೆ", text: "ದಿನಾಂಕ, ಸಮಾರಂಭ ಮತ್ತು ಉಡುಪು ಹಂಚಿಕೊಳ್ಳಿ — ಪೂರ್ಣ ಲುಕ್ ಒಟ್ಟಿಗೆ ಯೋಜಿಸಲು." },
+  { meta: "ಹಂತ 02", title: "ಟ್ರಯಲ್ ಮತ್ತು ಆಯ್ಕೆ", text: "ಬೇಸ್, ಕಣ್ಣು ಮತ್ತು ಹೇರ್ ನಿರ್ಧರಿಸಿ, ನಂತರ ಆಭರಣ ಮತ್ತು ಬಾಡಿಗೆ ಉಡುಪು ಆಯ್ಕೆಮಾಡಿ." },
+  { meta: "ಹಂತ 03", title: "ಸಂಭ್ರಮದ ದಿನ", text: "ಯೋಜಿತ ಸಮಯಪಟ್ಟಿಯೊಂದಿಗೆ ಪ್ರಿಯಾ ಬರುತ್ತಾರೆ — ಆತುರವಿಲ್ಲದೆ ಶಾಂತವಾಗಿ ಸಿದ್ಧರಾಗಿ." },
+];
+
 const occasionPaths = [
   { to: "/bridal-makeup", en: "Wedding day", kn: "ಮದುವೆಯ ದಿನ", detailEn: "Bridal makeup, trial and long-wear planning", detailKn: "ವಧು ಮೇಕಪ್, ಟ್ರಯಲ್ ಮತ್ತು ದೀರ್ಘಕಾಲದ ಯೋಜನೆ" },
   { to: "/cultural-looks", en: "Muhurtham & rituals", kn: "ಮುಹೂರ್ತ ಮತ್ತು ಶಾಸ್ತ್ರ", detailEn: "Kannada and regional styling with cultural care", detailKn: "ಕನ್ನಡ ಮತ್ತು ಪ್ರಾದೇಶಿಕ ಸಂಪ್ರದಾಯದ ಸ್ಟೈಲಿಂಗ್" },
@@ -152,15 +168,14 @@ function Index() {
       <Section>
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
           <div>
-            <p className="eyebrow text-terracotta">The artistry</p>
+            <p className="eyebrow text-terracotta">{pick("The artistry", "ಕಲಾತ್ಮಕತೆ")}</p>
             <h2 className="section-title mt-5">
-              A look that still feels like <em>you.</em>
+              {pick(<>A look that still feels like <em>you.</em></>, <>ನಿಮ್ಮಂತೆಯೇ ಅನಿಸುವ <em>ಲುಕ್.</em></>)}
             </h2>
           </div>
           <div className="lg:pt-6">
             <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Priya Makeover brings makeup, hair, draping and adornment into one considered vision — so every detail feels
-              connected, comfortable and made for your celebration.
+              {pick("Priya Makeover brings makeup, hair, draping and adornment into one considered vision — so every detail feels connected, comfortable and made for your celebration.", "ಪ್ರಿಯಾ ಮೇಕ್‌ಓವರ್ ಮೇಕಪ್, ಹೇರ್, ಡ್ರೇಪಿಂಗ್ ಮತ್ತು ಆಭರಣವನ್ನು ಒಂದೇ ದೃಷ್ಟಿಯಲ್ಲಿ ಜೋಡಿಸುತ್ತದೆ — ಪ್ರತಿ ವಿವರ ಹೊಂದಿಕೊಂಡು, ಆರಾಮವಾಗಿ, ನಿಮ್ಮ ಸಂಭ್ರಮಕ್ಕಾಗಿಯೇ.")}
             </p>
             <div className="mt-12 grid gap-8 sm:grid-cols-3">
                <Stat value="01" label={pick("Plan the look", "ಲುಕ್ ಯೋಜನೆ")} />
@@ -169,10 +184,10 @@ function Index() {
             </div>
           </div>
         </div>
-        <CardGrid items={services} />
+        <CardGrid items={pick(services, servicesKn)} />
         <div className="mt-12 flex flex-wrap gap-8">
-          <ActionLink to="/services">All services in detail</ActionLink>
-          <ActionLink to="/pricing">Packages & pricing</ActionLink>
+          <ActionLink to="/services">{pick("All services in detail", "ಎಲ್ಲ ಸೇವೆಗಳ ವಿವರ")}</ActionLink>
+          <ActionLink to="/pricing">{pick("Packages & pricing", "ಪ್ಯಾಕೇಜ್ ಮತ್ತು ಬೆಲೆ")}</ActionLink>
         </div>
       </Section>
 
@@ -206,15 +221,13 @@ function Index() {
       <Section tone="sage">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
           <SectionHead
-            eyebrow="Selected details"
+            eyebrow={pick("Selected details", "ಆಯ್ದ ವಿವರಗಳು")}
             title={
-              <>
-                Made for every <em>ritual.</em>
-              </>
+              pick(<>Made for every <em>ritual.</em></>, <>ಪ್ರತಿ <em>ಶಾಸ್ತ್ರಕ್ಕೂ.</em></>)
             }
           />
           <Link to="/lookbook" className="text-xs uppercase tracking-wide text-muted-foreground underline">
-            View full lookbook
+            {pick("View full lookbook", "ಪೂರ್ಣ ಲುಕ್‌ಬುಕ್ ನೋಡಿ")}
           </Link>
         </div>
         <div className="grid gap-5 md:grid-cols-12 md:items-start">
@@ -230,8 +243,8 @@ function Index() {
               />
             </div>
             <figcaption className="mt-4 flex items-baseline justify-between gap-4">
-              <span className="font-display text-2xl">Jasmine & silk</span>
-              <span className="text-xs uppercase tracking-wide text-muted-foreground">Hair artistry</span>
+              <span className="font-display text-2xl">{pick("Jasmine & silk", "ಮಲ್ಲಿಗೆ ಮತ್ತು ರೇಷ್ಮೆ")}</span>
+              <span className="text-xs uppercase tracking-wide text-muted-foreground">{pick("Hair artistry", "ಹೇರ್ ಕಲೆ")}</span>
             </figcaption>
           </figure>
           <figure className="group md:col-span-4 md:mt-28">
@@ -246,17 +259,17 @@ function Index() {
               />
             </div>
             <figcaption className="mt-4 flex items-baseline justify-between gap-4">
-              <span className="font-display text-2xl">Quiet details</span>
-              <span className="text-xs uppercase tracking-wide text-muted-foreground">Bridal edit</span>
+              <span className="font-display text-2xl">{pick("Quiet details", "ಸೂಕ್ಷ್ಮ ವಿವರಗಳು")}</span>
+              <span className="text-xs uppercase tracking-wide text-muted-foreground">{pick("Bridal edit", "ವಧು ಆಯ್ಕೆ")}</span>
             </figcaption>
           </figure>
           <aside className="md:col-span-3 md:pl-5 md:pt-10">
             <span className="font-display text-7xl text-sage">“</span>
             <p className="-mt-5 font-display text-3xl leading-tight">
-              Tradition isn’t a costume. It is a story, carried with grace.
+              {pick("Tradition isn’t a costume. It is a story, carried with grace.", "ಸಂಪ್ರದಾಯ ವೇಷವಲ್ಲ. ಅದು ಗೌರವದಿಂದ ಹೊತ್ತ ಕಥೆ.")}
             </p>
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-              Every look begins with your outfit, your rituals and the way you want to feel when the room turns toward you.
+              {pick("Every look begins with your outfit, your rituals and the way you want to feel when the room turns toward you.", "ಪ್ರತಿ ಲುಕ್ ನಿಮ್ಮ ಉಡುಪು, ನಿಮ್ಮ ಶಾಸ್ತ್ರಗಳು ಮತ್ತು ನೀವು ಅನುಭವಿಸಬೇಕಾದ ಭಾವನೆಯಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.")}
             </p>
           </aside>
         </div>
@@ -265,24 +278,23 @@ function Index() {
       <Section>
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-6">
           <div className="lg:pr-20">
-            <p className="eyebrow text-terracotta">The rental edit</p>
+            <p className="eyebrow text-terracotta">{pick("The rental edit", "ಬಾಡಿಗೆ ಸಂಗ್ರಹ")}</p>
             <h2 className="section-title mt-5">
-              The finishing pieces, <em>curated together.</em>
+              {pick(<>The finishing pieces, <em>curated together.</em></>, <>ಅಂತಿಮ ಸ್ಪರ್ಶಗಳು, <em>ಒಟ್ಟಿಗೆ ಆಯ್ಕೆ.</em></>)}
             </h2>
             <p className="mt-7 max-w-lg leading-relaxed text-muted-foreground">
-              Explore jewellery, ornaments and occasion wear selected to complement your complexion, ceremony and styling —
-              without the pressure of buying every piece.
+              {pick("Explore jewellery, ornaments and occasion wear selected to complement your complexion, ceremony and styling — without the pressure of buying every piece.", "ನಿಮ್ಮ ಚರ್ಮದ ಬಣ್ಣ, ಸಮಾರಂಭ ಮತ್ತು ಸ್ಟೈಲಿಂಗ್‌ಗೆ ಹೊಂದುವ ಆಭರಣ ಮತ್ತು ಉಡುಪುಗಳು — ಪ್ರತಿಯೊಂದನ್ನೂ ಖರೀದಿಸುವ ಒತ್ತಡವಿಲ್ಲದೆ.")}
             </p>
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-xs font-semibold uppercase tracking-wide">
-              <span>Kundan & polki</span>
-              <span>Hair ornaments</span>
-              <span>Lehengas</span>
-              <span>Sarees</span>
-              <span>Occasion dresses</span>
+              <span>{pick("Kundan & polki", "ಕುಂದನ್ ಮತ್ತು ಪೋಲ್ಕಿ")}</span>
+              <span>{pick("Hair ornaments", "ಕೂದಲಿನ ಆಭರಣ")}</span>
+              <span>{pick("Lehengas", "ಲೆಹೆಂಗಾ")}</span>
+              <span>{pick("Sarees", "ಸೀರೆಗಳು")}</span>
+              <span>{pick("Occasion dresses", "ಸಮಾರಂಭದ ಉಡುಪು")}</span>
             </div>
             <div className="mt-10 flex flex-wrap gap-8">
-              <ActionLink to="/rentals">Dress rentals</ActionLink>
-              <ActionLink to="/ornaments">Jewellery & ornaments</ActionLink>
+              <ActionLink to="/rentals">{pick("Dress rentals", "ಉಡುಪು ಬಾಡಿಗೆ")}</ActionLink>
+              <ActionLink to="/ornaments">{pick("Jewellery & ornaments", "ಆಭರಣಗಳು")}</ActionLink>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -310,7 +322,7 @@ function Index() {
                   className="gallery-image"
                 />
               </div>
-              <figcaption className="mt-3 font-display text-xl">Dresses & drapes</figcaption>
+              <figcaption className="mt-3 font-display text-xl">{pick("Dresses & drapes", "ಉಡುಪು ಮತ್ತು ಡ್ರೇಪ್")}</figcaption>
             </figure>
           </div>
         </div>
@@ -318,14 +330,12 @@ function Index() {
 
       <Section tone="sage">
         <SectionHead
-          eyebrow="How it works"
+          eyebrow={pick("How it works", "ಹೇಗೆ ನಡೆಯುತ್ತದೆ")}
           title={
-            <>
-              From first message to <em>celebration day.</em>
-            </>
+            pick(<>From first message to <em>celebration day.</em></>, <>ಮೊದಲ ಸಂದೇಶದಿಂದ <em>ಸಂಭ್ರಮದ ದಿನದವರೆಗೆ.</em></>)
           }
         />
-        <CardGrid items={journeySteps} />
+        <CardGrid items={pick(journeySteps, journeyStepsKn)} />
       </Section>
 
       <section className="border-y border-border bg-terracotta text-primary-foreground">
@@ -344,20 +354,17 @@ function Index() {
             <div className="max-w-xl">
               <p className="eyebrow opacity-70">Priya Makeover</p>
               <h2 className="mt-5 font-display text-[clamp(3.3rem,6vw,6rem)] leading-[0.9]">
-                One studio.
-                <br />
-                <em>Every detail.</em>
+                {pick(<>One studio.<br /><em>Every detail.</em></>, <>ಒಂದೇ ಸ್ಟುಡಿಯೋ.<br /><em>ಪ್ರತಿ ವಿವರ.</em></>)}
               </h2>
               <p className="mt-8 text-base leading-relaxed text-primary-foreground/80">
-                From wedding mornings to festive evenings, Priya Makeover is a calm place to shape your complete look. Makeup,
-                hair, draping, jewellery and dress rentals come together with one clear eye and personal attention.
+                {pick("From wedding mornings to festive evenings, Priya Makeover is a calm place to shape your complete look. Makeup, hair, draping, jewellery and dress rentals come together with one clear eye and personal attention.", "ಮದುವೆಯ ಬೆಳಗಿನಿಂದ ಹಬ್ಬದ ಸಂಜೆವರೆಗೆ, ಪ್ರಿಯಾ ಮೇಕ್‌ಓವರ್ ನಿಮ್ಮ ಪೂರ್ಣ ಲುಕ್ ರೂಪಿಸಲು ಶಾಂತ ಸ್ಥಳ. ಮೇಕಪ್, ಹೇರ್, ಡ್ರೇಪಿಂಗ್, ಆಭರಣ ಮತ್ತು ಉಡುಪು ಬಾಡಿಗೆ ವೈಯಕ್ತಿಕ ಗಮನದೊಂದಿಗೆ.")}
               </p>
               <div className="mt-10 flex flex-wrap gap-8">
                 <ActionLink to="/about" light>
-                  Meet Priya
+                  {pick("Meet Priya", "ಪ್ರಿಯಾ ಪರಿಚಯ")}
                 </ActionLink>
                 <ActionLink to="/location" light>
-                  Visit the studio
+                  {pick("Visit the studio", "ಸ್ಟುಡಿಯೋಗೆ ಭೇಟಿ")}
                 </ActionLink>
               </div>
             </div>
