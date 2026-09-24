@@ -164,6 +164,24 @@
   button, a { -webkit-tap-highlight-color: transparent; }
 
   h1, h2, h3, p { text-wrap: pretty; }
+
+  /* Kannada typography: elegant rounded display + highly legible body font */
+  html[lang="kn"] body {
+    font-family: "Noto Sans Kannada", "Karla", Arial, sans-serif;
+  }
+  html[lang="kn"] h1,
+  html[lang="kn"] h2,
+  html[lang="kn"] h3,
+  html[lang="kn"] .section-title {
+    font-family: "Baloo Tamma 2", "Noto Sans Kannada", sans-serif;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+  html[lang="kn"] .eyebrow,
+  html[lang="kn"] .action-link {
+    font-family: "Noto Sans Kannada", sans-serif;
+    letter-spacing: 0.08em;
+  }
 }
 
 @utility section-space {
