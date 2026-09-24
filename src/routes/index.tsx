@@ -374,19 +374,19 @@ function Index() {
 
       <section className="bg-forest px-5 py-24 text-hero-foreground sm:px-8 sm:py-32">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="eyebrow text-hero-foreground/65">Your date · Your look · Your story</p>
+          <p className="eyebrow text-hero-foreground/65">{pick("Your date · Your look · Your story", "ನಿಮ್ಮ ದಿನಾಂಕ · ನಿಮ್ಮ ಲುಕ್ · ನಿಮ್ಮ ಕಥೆ")}</p>
           <h2 className="mx-auto mt-6 max-w-[12ch] font-display text-[clamp(4rem,8vw,8rem)] leading-[0.82]">
-            Let’s create something <em>unforgettable.</em>
+            {pick(<>Let’s create something <em>unforgettable.</em></>, <>ಮರೆಯಲಾಗದ ಏನನ್ನಾದರೂ <em>ರಚಿಸೋಣ.</em></>)}
           </h2>
           <p className="mx-auto mt-7 max-w-lg text-sm leading-relaxed text-hero-foreground/70">
-            Share your event date, functions and the style you love. Priya will help shape the complete look with you.
+            {pick("Share your event date, functions and the style you love. Priya will help shape the complete look with you.", "ನಿಮ್ಮ ದಿನಾಂಕ, ಸಮಾರಂಭಗಳು ಮತ್ತು ಇಷ್ಟದ ಶೈಲಿ ಹಂಚಿಕೊಳ್ಳಿ. ಪ್ರಿಯಾ ನಿಮ್ಮೊಂದಿಗೆ ಪೂರ್ಣ ಲುಕ್ ರೂಪಿಸುತ್ತಾರೆ.")}
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-8">
             <ActionLink to="/contact" light>
-              Send an enquiry
+              {pick("Send an enquiry", "ವಿಚಾರಣೆ ಕಳುಹಿಸಿ")}
             </ActionLink>
             <ActionLink to="/faq" light>
-              Read the FAQ
+              {pick("Read the FAQ", "ಪ್ರಶ್ನೋತ್ತರ ಓದಿ")}
             </ActionLink>
           </div>
         </div>
