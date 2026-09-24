@@ -172,6 +172,7 @@
   html[lang="kn"] h1,
   html[lang="kn"] h2,
   html[lang="kn"] h3,
+  html[lang="kn"] .font-display,
   html[lang="kn"] .section-title {
     font-family: "Baloo Tamma 2", "Noto Sans Kannada", sans-serif;
     line-height: 1.15;
